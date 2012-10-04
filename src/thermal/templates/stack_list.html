@@ -31,8 +31,7 @@
       <td>{{ s.CreationTime }}</td>
       <td>{{ s.LastUpdatedTime }}</td>
       <td>{{ s.StackStatus }} <a style="cursor: help;" title="{{ s.StackStatusReason }}">?</a></td>
-      <td><a href="/event/list/{{ s.StackName }}/">event list</a> ||
-          <img src="/static/icon_deletelink.gif"> <a href="/stack/delete/{{ s.StackName }}/">Delete Stack</a></td>
+      <td><img src="/static/icon_deletelink.gif"> <a href="{% url stack_delete s.StackName %}">Delete Stack</a></td>
     </tr>
     {% endfor %}
     

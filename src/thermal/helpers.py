@@ -6,7 +6,6 @@ from heat import client as heat_client
 
 def format_parameters(self, params):
     parameters = {}
-    print params
     for count, p in enumerate(params, 1):
         parameters['Parameters.member.%d.ParameterKey' % count] = p
         parameters['Parameters.member.%d.ParameterValue' % count] = params[p]

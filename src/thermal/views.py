@@ -1,7 +1,9 @@
 import httplib2
 import json
+import collections
 
 from django.views.generic import TemplateView
+from django.http import HttpResponseRedirect
 
 from thermal.models import Stack
 from thermal.models import Event
@@ -16,6 +18,14 @@ class StackListView(TemplateView):
         context['stacks'] = Stack.objects.all()
         context['menu'] = 1
         return context
+
+class StackDeleteView(TemplateView):
+    template_name = 'stack_delete.html'
+
+    def get(self, request, stack_name):
+        Stack.delete(stack_name)
+        response = HttpResponseRedirect('/heat/stack/')
+        return response
 
 class TemplateListView(TemplateView):
 
@@ -52,11 +62,16 @@ class TemplateLaunchView(TemplateView):
         url = 'https://raw.github.com/heat-api/heat/master/templates/%s'
         url = url % template_name
         resp, content = h.request(url, "GET")
-        return json.loads(content)
+        try:
+            # object_pairs_hook requires py2.7
+            tmpl_obj = json.loads(content,
+                                  object_pairs_hook=collections.OrderedDict)
+        except:
+            tmpl_obj = json.loads(content)
+        return tmpl_obj
     
     def get_context_data(self, template_name, **kwargs):
         context = super(TemplateLaunchView, self).get_context_data(**kwargs)
-        template_name = kwargs['template_name']
 
         t = self._get_template(template_name)
         context['template_name'] = template_name
@@ -68,20 +83,9 @@ class TemplateLaunchView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         t = self._get_template(kwargs['template_name'])
-        parameters = {'StackName': request.POST['StackName'],
-                      'TimeoutInMinutes': 5,
-                      'TemplateBody': t,
-                     }
-        # get the form params
-        c = get_client()
-        params_to_format = {}
-        for p in context['parameters']:
-            if p in kwargs:
-                params_to_format[p] = kwargs[p]
-        parameters.update(c.format_parameters(params_to_format))
-        print parameters
-        result = c.create_stack(**parameters)
-        return result
+        result = Stack.launch(t, request.POST.copy())
+        response = HttpResponseRedirect('/heat/stack/')
+        return response
             
 class EventListView(TemplateView):
 

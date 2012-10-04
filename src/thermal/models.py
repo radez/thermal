@@ -1,4 +1,6 @@
 import gettext
+import json
+
 from django.db import models
 from thermal.db import xml_models
 gettext.install('heat', unicode=1)
@@ -19,6 +21,42 @@ class Stack(xml_models.Model):
 
     def __unicode__(self):
         return self.StackID
+
+    @staticmethod
+    def launch(template, parameters):
+        '''
+        take a json object and QueryDict of parameters
+        and calls heat's api to launch a stack
+        '''
+        c = HEAT_CLIENT
+        #import pdb
+        #pdb.set_trace()
+        stack_name = parameters['StackName']
+        del parameters['StackName'] # can't use pop because it's a QueryDict
+
+        launch_parameters = {}
+        for param in parameters:
+            # have to be explicit like this because data is in a QueryDict
+            if param in template['Parameters'].keys():
+                launch_parameters[param] = parameters[param]
+
+        formatted_parameters = c.format_parameters(launch_parameters)
+        formatted_parameters.update({'StackName': stack_name,
+                           'TimeoutInMinutes': 5,
+                           'TemplateBody': json.dumps(template, sort_keys=False),
+                          })
+        print formatted_parameters
+        # get the form params
+        result = c.create_stack(**formatted_parameters)
+        return result
+
+    @staticmethod
+    def delete(stack_name):
+        parameters = {'StackName': stack_name}
+        c = HEAT_CLIENT
+        result = c.delete_stack(**parameters)
+        return result
+ 
 
 
 class EventResourceProperties(xml_models.Model):
