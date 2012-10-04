@@ -1,0 +1,9 @@
+This module provides mock data from heat so that development can happen off of
+a full heat/openstack install. In general it provides a mock heat client object
+and xml data that the calls to the rest api would return.
+
+Add mock data and functionality to is as nessesary to make features work.
+
+To use link this directory into the example projects directory named heat.
+
+example_project $ ln -s ../heat_mock heat

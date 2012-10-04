@@ -1,0 +1,34 @@
+<ListStacksResponse>
+  <ListStacksResult>
+    <StackSummaries>
+      <member>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress/1</StackId>
+        <LastUpdatedTime>2012-09-05T19:39:56Z</LastUpdatedTime>
+        <TemplateDescription>AWS CloudFormation Sample Template WordPress_Single_Instance: WordPress is web software you can use to create a beautiful website or blog. This template installs a single-instance WordPress deployment using a local MySQL database to store the data.</TemplateDescription>
+        <StackStatusReason>Stack successfully created</StackStatusReason>
+        <CreationTime>2012-09-05T19:38:18Z</CreationTime>
+        <StackName>wordpress</StackName>
+        <StackStatus>CREATE_COMPLETE</StackStatus>
+      </member>
+      <member>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress2/2</StackId>
+        <LastUpdatedTime>2012-09-26T13:42:06Z</LastUpdatedTime>
+        <TemplateDescription>AWS CloudFormation Sample Template WordPress_Single_Instance: WordPress is web software you can use to create a beautiful website or blog. This template installs a single-instance WordPress deployment using a local MySQL database to store the data.</TemplateDescription>
+        <StackStatusReason>Stack successfully created</StackStatusReason>
+        <CreationTime>2012-09-26T13:41:40Z</CreationTime>
+        <StackName>wordpress2</StackName>
+        <StackStatus>CREATE_COMPLETE</StackStatus>
+      </member>
+      <member>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress3/3</StackId>
+        <LastUpdatedTime>2012-09-26T20:28:53Z</LastUpdatedTime>
+        <TemplateDescription>AWS CloudFormation Sample Template WordPress_Single_Instance: WordPress is web software you can use to create a beautiful website or blog. This template installs a single-instance WordPress deployment using a local MySQL database to store the data.</TemplateDescription>
+        <StackStatusReason>Resource Instance "WikiDatabase" failed with: The Image (F17-x86_64-cfntools) could not be found.</StackStatusReason>
+        <CreationTime>2012-09-26T20:28:53Z</CreationTime>
+        <StackName>wordpress3</StackName>
+        <StackStatus>CREATE_FAILED</StackStatus>
+      </member>
+    </StackSummaries>
+  </ListStacksResult>
+</ListStacksResponse>
+

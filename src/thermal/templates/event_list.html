@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Event List{% endblock title %}
+{% block header_title %}All Events{% endblock header_title %}
+{% block main %}
+<div class="table_wrapper">
+  <table id="global_usage" class="table table-bordered table-striped">
+    <thead>
+      <tr class='table_caption'>
+        <th class='table_header' colspan='6'>
+          <h3 class='table_title'>Events</h3>
+          <div class="table_actions clearfix">&nbsp;</div>
+
+        </th>
+      </tr>
+      <tr>
+          <th class="">Timestamp</th>
+          <th class="">Stack Name</th>
+          <th class="">Logical Resource</th>
+          <th class="">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for s in events %}
+    <tr>
+      <td>{{ s.Timestamp }}</td>
+      <td>{{ s.StackName }}</td>
+      <td>{{ s.LogicalResourceId }}</td>
+      <td>{{ s.ResourceStatus }} <a style="cursor: help;" title="{{ s.ResourceStatusData }}">?</a></td>
+    </tr>
+    {% endfor %}
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <span>Displaying {{ events.count }} item{{ events|pluralize }}</span>
+
+        </td>
+      </td>
+    </tfoot>
+  </table>
+</div>
+{% endblock main %}

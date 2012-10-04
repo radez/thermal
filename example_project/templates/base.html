@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <title>{% block title %}block title{% endblock title %} – OpenStack Dashboard</title>
+    <link href='/static/bootstrap/css/bootstrap.min.css' media='screen' rel='stylesheet' />
+    <link href='/static/dashboard/css/style.css' media='screen' rel='stylesheet' />
+    <link rel="shortcut icon" href="/static/favicon.ico"/>
+  </head>
+  <body id="">
+    
+      <div id="container">
+      <div class='sidebar'>
+        <h1 class="brand clearfix"><a href="/dashboard/home/">OpenStack Dashboard</a></h1>
+
+        <div class='clearfix'>
+          <ul class="nav nav-tabs">
+                <li> <a href="/dashboard/nova/" tabindex='1'>Project</a> </li>
+                <li> <a href="/dashboard/syspanel/" tabindex='1'>Admin</a> </li>
+                <li class="active"> <a href="/heat/" tabindex='1'>Heat</a> </li>
+          </ul>
+        </div>
+ 
+        <h4>Heat Panel</h4>
+        <ul class="main_nav">
+            <li> <a href="/heat/stack/"{% if menu == 1 %} class="active"{% endif %} tabindex='1'>Stacks</a> </li>
+            <li> <a href="/heat/template/"{% if menu == 2 %} class="active"{% endif %}  tabindex='1'>Templates</a> </li>
+            <li> <a href="/heat/event/"{% if menu == 3 %} class="active"{% endif %}  tabindex='1'>Events</a> </li>
+        </ul>
+      </div>
+
+
+        <div id='main_content'>
+          <div class='topbar'>
+          
+          <div id="user_info" class="pull-right">
+            <span>Logged in as: admin</span>
+            <a href="/dashboard/settings/">Settings</a>
+            <a href="/dashboard/auth/logout/">Sign Out</a>
+          </div>
+          <div class='page-header'>
+            <h2>{% block header_title %}block header_title{% endblock header_title %}</h2>
+          </div>
+        </div>
+          
+    
+<div class="messages"/>
+  
+{% block main %}
+<div class="table_wrapper">
+
+  <form action="/dashboard/syspanel/" method="POST"><div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cc52f42a3c0085d4a1bb7c4b11d1294c' /></div>
+  
+  <table id="global_usage" class="table table-bordered table-striped">
+    <thead>
+      <tr class='table_caption'>
+        <th class='table_header' colspan='6'>
+          <h3 class='table_title'>Usage Summary</h3>
+          <div class="table_actions clearfix">
+            <a href='?date_month=2012-10-01&amp;date_year=2012-10-02&amp;format=csv'  id="global_usage__action_csv_summary" class="btn btn-small btn-download">Download CSV Summary</a>
+          </div>
+        </th>
+      </tr>
+      <tr>
+          <th  class="">Project ID</th>
+          <th  class="">VCPUs</th>
+          <th  class="">Disk</th>
+          <th  class="">RAM</th>
+          <th  class="">VCPU Hours</th>
+          <th  class="">Disk GB Hours</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tr  id="global_usage__row__54a2abb60fa14f7fae4795ec23ab9314" class="">
+  <td  class="">54a2abb60fa14f7fae4795ec23ab9314</td><td  class="">2</td><td  class="">20</td><td  class="">4GB</td><td  class="">77.89</td><td  class="">778.86</td>
+</tr>
+
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <span>Displaying 1 item</span>
+          
+        </td>
+      </td>
+    </tfoot>
+  </table>
+  
+  </form>
+</div>
+{% endblock main %}
+
+
+
+        </div>
+      </div>
+    
+    <div id="footer">
+      
+    </div>
+    
+      
+<script src='/static/horizon/js/jquery/jquery.min.js' type='text/javascript' charset="utf-8"></script>
+<script src='/static/horizon/js/json2.js' type='text/javascript' charset="utf-8"></script>
+<script src='/static/horizon/js/jquery/jquery.cookie.js' type='text/javascript' charset="utf-8"></script>
+<script src='/static/horizon/js/jquery/jquery.quicksearch.js' type='text/javascript' charset="utf-8"></script>
+<script src='/static/horizon/js/jquery/jquery.example.min.js' type='text/javascript' charset="utf-8"></script>
+<script src="/static/horizon/js/jquery/jquery.table-sorter.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="/static/bootstrap/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script src="/static/horizon/js/hogan-1.0.5.min.js" type="text/javascript" charset='utf-8'></script>
+
+
+<script src='/static/horizon/js/horizon.js' type='text/javascript' charset='utf-8'></script>
+<script type='text/javascript' charset='utf-8'>
+/* Storage for backend configuration variables which the frontend
+ * should be aware of.
+ */
+horizon.conf = {
+    debug: false,
+    static_url: "/static/",
+    ajax: {
+        queue_limit: 10
+    }
+}
+</script>
+
+<script src='/static/horizon/js/tabs.js' type='text/javascript' charset='utf-8'></script>
+<script src='/static/horizon/js/plugins.js' type='text/javascript' charset='utf-8'></script>
+<script src='/static/horizon/js/tables.js' type='text/javascript' charset='utf-8'></script>
+<script src='/static/horizon/js/modals.js' type='text/javascript' charset='utf-8'></script>
+<script src='/static/horizon/js/forms.js' type='text/javascript' charset='utf-8'></script>
+<script src='/static/horizon/js/form_examples.js' type='text/javascript' charset='utf-8'></script>
+
+
+<script type="text/html" id="modal_template">
+
+<div class="modal hide">
+  <div class='modal-header'>
+    <a class='close' data-dismiss='modal'>&times;</a>
+    <h3>{{title}}</h3>
+  </div>
+  <div class='modal-body'>
+    {{body}}
+  </div>
+  <div class='modal-footer'>
+    <a href='#' class='btn btn-primary'>{{confirm}}</a>
+    <a href='#' class='btn cancel' data-dismiss='modal'>{{cancel}}</a>
+  </div>
+</div>
+
+</script>
+
+<script type="text/html" id="empty_row_template">
+
+<tr class="odd empty"><td colspan="{{colspan}}">No items to display.</td></tr>
+
+</script>
+
+<script type="text/html" id="alert_message_template">
+
+<div class="alert alert-block fade in alert-{{type}}">
+  <a class="close" data-dismiss="alert" href="#">&times;</a>
+  <p><strong>{{type_capitalized}}: </strong>{{message}}</p>
+</div>
+
+</script>
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<DescribeStackEventsResponse>
+  <DescribeStackEventsResult>
+    <StackEvents>
+      <member>
+        <EventId>1</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress/1</StackId>
+        <ResourceStatus>IN_PROGRESS</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-05T19:38:18Z</Timestamp>
+        <StackName>wordpress</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "root"@"localhost"
+IDENTIFIED BY "verybadpass";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/root/ --e s/password_here/verybadpass/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F16-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.xlarge</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>None</PhysicalResourceId>
+        <ResourceStatusData>state changed</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+      <member>
+        <EventId>2</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress/1</StackId>
+        <ResourceStatus>CREATE_COMPLETE</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-05T19:39:56Z</Timestamp>
+        <StackName>wordpress</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "root"@"localhost"
+IDENTIFIED BY "verybadpass";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/root/ --e s/password_here/verybadpass/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F16-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.xlarge</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>e1ee201a-117f-4b11-ac66-9e72bbfdc5c9</PhysicalResourceId>
+        <ResourceStatusData>state changed</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+      <member>
+        <EventId>3</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress2/2</StackId>
+        <ResourceStatus>IN_PROGRESS</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-26T13:41:40Z</Timestamp>
+        <StackName>wordpress2</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "root"@"localhost"
+IDENTIFIED BY "verybadpass";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/root/ --e s/password_here/verybadpass/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F16-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.xlarge</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>None</PhysicalResourceId>
+        <ResourceStatusData>state changed</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+      <member>
+        <EventId>4</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress2/2</StackId>
+        <ResourceStatus>CREATE_COMPLETE</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-26T13:42:06Z</Timestamp>
+        <StackName>wordpress2</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "root"@"localhost"
+IDENTIFIED BY "verybadpass";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/root/ --e s/password_here/verybadpass/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F16-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.xlarge</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>e0fe48e3-6715-46a0-925f-e6459d4084c1</PhysicalResourceId>
+        <ResourceStatusData>state changed</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+      <member>
+        <EventId>5</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress3/3</StackId>
+        <ResourceStatus>IN_PROGRESS</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-26T20:28:53Z</Timestamp>
+        <StackName>wordpress3</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "admin"@"localhost"
+IDENTIFIED BY "admin";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/admin/ --e s/password_here/admin/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F17-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.large</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>None</PhysicalResourceId>
+        <ResourceStatusData>state changed</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+      <member>
+        <EventId>6</EventId>
+        <StackId>gblomqui.rdu.redhat.com:8000:stack/wordpress3/3</StackId>
+        <ResourceStatus>CREATE_FAILED</ResourceStatus>
+        <ResourceType>AWS::EC2::Instance</ResourceType>
+        <Timestamp>2012-09-26T20:28:53Z</Timestamp>
+        <StackName>wordpress3</StackName>
+        <ResourceProperties>
+          <NovaSchedulerHints>None</NovaSchedulerHints>
+          <UserData>#!/bin/bash -v
+/opt/aws/bin/cfn-init
+# Setup MySQL root password and create a user
+mysqladmin -u root password 'admin'
+cat &lt;&lt; EOF | mysql -u root --password='admin'
+CREATE DATABASE wordpress;
+GRANT ALL PRIVILEGES ON wordpress.* TO "admin"@"localhost"
+IDENTIFIED BY "admin";
+FLUSH PRIVILEGES;
+EXIT
+EOF
+sed --in-place --e s/database_name_here/wordpress/ --e s/username_here/admin/ --e s/password_here/admin/ /usr/share/wordpress/wp-config.php
+</UserData>
+          <SourceDestCheck>None</SourceDestCheck>
+          <AvailabilityZone>nova</AvailabilityZone>
+          <Monitoring>None</Monitoring>
+          <Volumes>None</Volumes>
+          <Tags>None</Tags>
+          <Tenancy>None</Tenancy>
+          <PlacementGroupName>None</PlacementGroupName>
+          <ImageId>F17-x86_64-cfntools</ImageId>
+          <SubnetId>None</SubnetId>
+          <KeyName>root_key</KeyName>
+          <SecurityGroups>None</SecurityGroups>
+          <SecurityGroupIds>None</SecurityGroupIds>
+          <KernelId>None</KernelId>
+          <RamDiskId>None</RamDiskId>
+          <DisableApiTermination>None</DisableApiTermination>
+          <InstanceType>m1.large</InstanceType>
+          <PrivateIpAddress>None</PrivateIpAddress>
+        </ResourceProperties>
+        <PhysicalResourceId>None</PhysicalResourceId>
+        <ResourceStatusData>The Image (F17-x86_64-cfntools) could not be found.</ResourceStatusData>
+        <LogicalResourceId>WikiDatabase</LogicalResourceId>
+      </member>
+    </StackEvents>
+  </DescribeStackEventsResult>
+</DescribeStackEventsResponse>
+

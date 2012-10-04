@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Template List{% endblock title %}
+{% block header_title %}Choose a Template{% endblock header_title %}
+{% block main %}
+
+<div class="table_wrapper">
+  <table id="global_usage" class="table table-bordered table-striped">
+    <thead>
+      <tr class='table_caption'>
+        <th class='table_header' colspan='6'>
+          <h3 class='table_title'>Templates</h3>
+          <div class="table_actions clearfix">&nbsp;</div>
+
+        </th>
+      </tr>
+      <tr>
+          <th class="">Template Name</th>
+          <th class="">Source</th>
+          <th class="">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for t in templates %}
+    <tr>
+      <td>{{ t }}</td>
+      <td>github.com/heat-api</td>
+      <td><a href="{% url template_launch t %}">Launch</a></td>
+    </tr>
+    {% endfor %}
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <span>Displaying {{ templates|length }} item{{ templates|pluralize }}</span>
+
+        </td>
+      </td>
+    </tfoot>
+  </table>
+</div>
+{% endblock main %}

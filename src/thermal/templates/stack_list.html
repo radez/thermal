@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Stack List{% endblock title %}
+{% block header_title %}All Stacks{% endblock header_title %}
+{% block main %}
+<div class="table_wrapper">
+
+  <form action="/dashboard/syspanel/" method="POST"><div style='display:none'><input type='hidden' name='csrfmiddlewaretoken' value='cc52f42a3c0085d4a1bb7c4b11d1294c' /></div>
+
+  <table id="global_usage" class="table table-bordered table-striped">
+    <thead>
+      <tr class='table_caption'>
+        <th class='table_header' colspan='6'>
+          <h3 class='table_title'>Stacks</h3>
+          <div class="table_actions clearfix"><a href="">Launch New</a></div>
+
+        </th>
+      </tr>
+      <tr>
+          <th class="">Stack Name</th>
+          <th class="">Created</th>
+          <th class="">Updated</th>
+          <th class="">Status</th>
+          <th class="">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for s in stacks %}
+    <tr>
+      <td><a href="{% url stack_event_list s.StackName %}" title="{{ s.TemplateDescription }}">{{ s.StackName }}</a>
+          <a style="cursor: help;" title="{{ s.TemplateDescription }}">?</a></td>
+      <td>{{ s.CreationTime }}</td>
+      <td>{{ s.LastUpdatedTime }}</td>
+      <td>{{ s.StackStatus }} <a style="cursor: help;" title="{{ s.StackStatusReason }}">?</a></td>
+      <td><a href="/event/list/{{ s.StackName }}/">event list</a> ||
+          <img src="/static/icon_deletelink.gif"> <a href="/stack/delete/{{ s.StackName }}/">Delete Stack</a></td>
+    </tr>
+    {% endfor %}
+    
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="6">
+          <span>Displaying {{ stacks.count }} item{{ stacks|pluralize }}</span>
+
+        </td>
+      </td>
+    </tfoot>
+  </table>
+
+  </form>
+</div>
+{% endblock main %}
