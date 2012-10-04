@@ -1,0 +1,14 @@
+<h1>Create Stack</h1>
+<form method="post">
+    Stack Name: <input type="textbox" name="StackName"></br>
+    <i><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A unique name for the stack</font></i><br>
+    {% for p in parameters|sort %}
+        {{ p }}: <input type="textbox" name="{{ p }}" value="{{ parameters[p].Default }}"><br/>
+        <i><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ parameters[p].Description }}</font></i><br>
+        {% if parameters[p].ConstraintDescription %}<i><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* {{ parameters[p].ConstraintDescription }}</font></i><br>{% endif %}
+    {% endfor %}
+    <input type="submit" value="Create Stack">
+</form>
+<hr>
+{{ parameters }}
+
